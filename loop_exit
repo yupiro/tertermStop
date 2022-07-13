@@ -1,0 +1,21 @@
+
+;=====================================================================
+do
+    :Aloop ;loop用ラベル
+    wait '>'
+    sendln 'show chassis alarm'
+    ; sendln 'show chassis hardware'
+    
+    ;条件分岐  1:'No alarms currently active'  2:'>'
+    wait 'No alarms currently active' '>'
+    if result=1 goto exit ;:exit へジャンプ
+    
+    if result=2 goto Aloop ; :loop　へジャンプ
+    sendln ''
+    sendln 'show chassis alarm'
+loop
+
+:exit
+sendln ''
+
+end
